@@ -1,0 +1,71 @@
+footer{
+    height: 8%;
+    font-family: 'Butler_Light';
+}
+
+
+footer div{
+    padding: 2px;
+    margin: 0px;
+    position: absolute; 
+    top: 15%;
+    left: 1%;
+    background-color:white;
+}
+
+footer span{
+    font-size: 16px;
+    color:black;
+    position: relative;
+    left:1%;
+}
+
+.accueil{
+    width:20px;
+    position: relative;
+    left: 1%;
+    top:-4px; 
+}
+.flech{
+    width:20px;
+    position: relative;
+    left: 1%;
+    top:-4px; 
+
+}
+
+
+
+@media screen and (max-width: 883px){
+    footer{
+        width: 100%;
+        height: 8%;
+        position: fixed; 
+        background-color:white;
+    }
+    
+    
+    footer div{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    footer span{
+        font-size: 20px;
+        color: #4A69FF ;
+    }
+
+    .accueil{
+        width:30px;
+        position: relative;
+        top:10px; 
+    }
+    .flech{
+        width:30px;
+        position: relative;
+        top:9px; 
+
+    }
+
+
+}

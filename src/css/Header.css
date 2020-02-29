@@ -1,0 +1,147 @@
+header{
+	z-index: 3000;
+	position: absolute;
+	top: 2%;
+	padding: 12px 0px 9px 15px ;
+	font-family: "Butler_Light";
+	color: rgb(255, 255, 255);
+	margin-bottom: 2%;
+}
+
+.left{
+	position: relative;
+	left: 0px;
+}
+
+.row{
+	margin-top: -5px;
+	height: 100px;
+	z-index: 99999;
+}
+.col-md-2{
+	height: 100px;
+	/* padding-left: 15px; */
+}
+
+.logo{
+	color:white;
+}
+
+.dep{
+	color: rgba(255, 255, 255, 0.788);
+	font-size:15px;
+	position: relative;
+	top: -38px;
+	
+}
+.titre{
+	color: rgb(255, 255, 255);
+	position: relative;
+	top: -23px;
+}
+
+
+.right .imgPProfil{
+	width: 50px;
+	margin-left: 18px;
+	margin-bottom: 3px;
+	border-radius: 50%;
+}
+
+.right{
+	text-align: left;
+	/* position: relative;
+	left: 37%; */
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+}
+
+/* @media screen and (max-width: 893px){
+
+	
+header{
+	background-color:white;
+	padding: 12px 0px 9px 15px ;
+	position: absolute;
+	height: 100px;
+	font-family: 'Muli';
+}
+
+header div{
+	display:inline-block;
+	font-size: 19px;
+}
+.dep{
+	color: grey;
+	font-size:15px;
+	position: relative;
+	top: -38px;
+}
+.titre{
+	position: relative;
+	top: -23px;
+}
+
+.left{
+	
+}
+.imgPProfil{
+	width: 50px;
+	margin-left: 35px;
+}
+
+.right{
+	width: 100%;
+	position: relative;
+	left: 30%;
+	font-size: 16px;
+	color: grey;
+}
+
+
+}
+
+@media screen and (max-width: 883px){
+
+	
+	header{
+		background-color:red;
+		padding: 12px 0px 9px 15px ;
+		position: absolute;
+		height: 100px;
+		font-family: 'Muli';
+	}
+	
+	header div{
+		display:inline-block;
+		font-size: 19px;
+	}
+	.dep{
+		color: grey;
+		font-size:15px;
+		position: relative;
+		top: -38px;
+	}
+	.titre{
+		position: relative;
+		top: -23px;
+	}
+	
+	.left{
+		
+	}
+	.imgPProfil{
+		width: 50px;
+		margin-left: 35px;
+	}
+	
+	.right{
+		width: 100%;
+		position: relative;
+		left: 30%;
+		font-size: 16px;
+		color: grey;
+	}
+	
+	
+	}  */
