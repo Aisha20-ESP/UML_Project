@@ -81,7 +81,7 @@ class Connection extends Component {
                 </div>
                 <div  className="row container-fluid d-flex flex-column align-content-center box2">
                     <div className="card col-md-4 col-10 col-xl-4 container cardConnec">
-                        <h5 style={style.connect} className="card-title text-uppercase text-center pt-3 mt-3 ">connection</h5>
+                        <h5 style={style.connect} className="card-title text-uppercase text-center pt-3 mt-3 ">connexion</h5>
                         <div className="m-2" style={style.hr}/>
                         
                         <div className="card-body ">
