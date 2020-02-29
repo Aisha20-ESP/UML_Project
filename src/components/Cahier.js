@@ -23,7 +23,7 @@ class Cahier extends Component {
           'Content-Type':'application/json;charset=UTF-8',
           "Access-Control-Allow-Origin":"*"
       }
-        axios.post("https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/recupEtudiant.php", headers)
+        axios.post("http://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/recupEtudiant.php", headers)
           .then(res => {
             // console.log(res.data);
             const id_etudiant = res.data.id.map(obj=>obj[0]);
@@ -57,7 +57,7 @@ class Cahier extends Component {
             "Access-Control-Allow-Origin":"*",
             "Access-Control-Allow-Headers": "privatekey"
         }
-        axios.post('https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/remplirCahierText.php',fd,headers)
+        axios.post('http://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/remplirCahierText.php',fd,headers)
         .then(result => {
           console.log(result)
           if (result.data.reussi === "true"){
