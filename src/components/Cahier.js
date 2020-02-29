@@ -57,7 +57,7 @@ class Cahier extends Component {
             "Access-Control-Allow-Origin":"*",
             "Access-Control-Allow-Headers": "privatekey"
         }
-        axios.post('http://uml2020.atwebpages.com/remplirCahierText.php',fd,headers)
+        axios.post('https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/remplirCahierText.php',fd,headers)
         .then(result => {
           console.log(result)
           if (result.data.reussi === "true"){
