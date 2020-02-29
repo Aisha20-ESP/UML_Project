@@ -61,7 +61,6 @@ class Cahier extends Component {
         .then(result => {
           console.log(result)
           if (result.data.reussi === "true"){
-            alert('Données enregistrées!!')
           }
         }).catch(result=>console.log(result))
         
