@@ -13,7 +13,7 @@ class Professeur extends Component {
         }
         data.append('id',localStorage.getItem('idp'))  
         data.append('check',true)
-        axios.post(`http://cors-anywhere.herokuapp.com/http://localhost:80/projet-uml/index.php`,data,headers)
+        axios.post(`https://cors-anywhere.herokuapp.com/http://localhost:80/projet-uml/index.php`,data,headers)
         .then(res=>{
             console.log(res)
            this.handleResponse(res.data)
