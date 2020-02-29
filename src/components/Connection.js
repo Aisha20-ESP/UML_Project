@@ -4,7 +4,6 @@ import {MdArrowForward} from 'react-icons/md'
 import user from '../images/user.png'
 import lock from '../images/lock.png'
 import "../css/connexion.css"
-import {Redirect} from 'react-router-dom'
 import background from '../images/background.png'
 
 class Connection extends Component {
@@ -22,29 +21,25 @@ class Connection extends Component {
         localStorage.clear()
     }
 
-    componentDidUpdate(){
-        
-    }
-
-     handleChange= async e => {
+     handleChange= e => {
          let {value,name}=e.target
         this.setState({[name]:value})
       }
       handleResponse= resp =>{
+          console.log(resp)
           
         if (!resp.length){
             this.setState({formCorrect:false})
         }  
         else{
             if (resp[0]['id_prof']){
-                localStorage.setItem('idProf',resp[1])
-                localStorage.setItem("nomProf",resp[0])
-                this.props.history.push('/')
+                localStorage.setItem('idProf',resp[0]['id_prof'])
+                localStorage.setItem("nomProf",resp[0]['nom'])
+                this.props.history.push('/professeur')
             }
             else if(resp[0]['id_etudiant']){
-                console.log("heeeeu")
                 localStorage.setItem('ide',resp[0]['id_etudiant'])
-                this.setState({redirect:true})
+                this.props.history.push('/etudiant')
             } 
         } 
 
@@ -61,11 +56,11 @@ class Connection extends Component {
           console.log(this.state)
           data.append('login',this.state.login)  
           data.append('password',this.state.password)
-          axios.post(`http://uml2020.atwebpages.com/verifconnex.php`,data,headers)
+          axios.post(`https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/verifconnex.php`,data,headers)
           .then(res=>{
-              const myData = JSON.parse("["+res.data.split("[")[1])
-             console.log(myData)
-             this.handleResponse(myData)
+              console.log(res)
+              res=res.data
+             this.handleResponse(res)
             })
           .catch(res=>console.log(res))
           
@@ -76,8 +71,6 @@ class Connection extends Component {
       }
 
     render() { 
-        if(this.state.redirect)
-            return <Redirect to="/" />
         return ( 
             <div className="container-fluid">
                 <div  className='container-fluid' style={style.bgConnec}>

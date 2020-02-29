@@ -24,8 +24,8 @@ class Accueil  extends Component {
     listeClasse(props) {
         const classState=props.classe;
         const liste=classState.map((listclass)=>
-            <span className=" choice rounded-circle ">
-                <Link to={{
+            <span key={listclass} className=" choice rounded-circle ">
+                <Link  to={{
                     pathname:"/choix-cours",
                     choix:listclass
                  }} 
