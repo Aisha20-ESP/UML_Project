@@ -56,7 +56,7 @@ class Connection extends Component {
           console.log(this.state)
           data.append('login',this.state.login)  
           data.append('password',this.state.password)
-          axios.post(`https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/verifconnex.php`,data,headers)
+          axios.post(`http://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/verifconnex.php`,data,headers)
           .then(res=>{
               console.log(res)
               res=res.data
