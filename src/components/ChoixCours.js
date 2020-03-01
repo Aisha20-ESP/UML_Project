@@ -20,12 +20,14 @@ class ChoixCours  extends Component {
 
 
     listeCours(props) {
+        var i=0;
         const classState=props.classe;
         const liste=classState.map((listcours)=>
-            <span key={listcours} className=" choice rounded-circle ">
+            <span className={(i++)+" choice rounded-circle "}>
                 <Link to={{
                     pathname:"/choix-action",
-                    choix:listcours
+                    choix:listcours,
+                    id:i
                  }} 
                  className="link">{listcours}</Link>
                 </span>
@@ -60,7 +62,6 @@ componentDidMount(){
             const id=result.data.id_mat.map(obj=>obj[0]);
             this.setState({id_mat:id});
             console.log(id);
-            localStorage.setItem("id_mat",id);
             console.log(this.state)
             
         })

@@ -12,7 +12,8 @@ class ChoixAction  extends Component {
     constructor(props){
         super(props)
         this.state = { 
-            cours:this.props.location.choix
+            cours:this.props.location.choix,
+            id:this.props.location.id
          }
 
         //  this.getnbrClasse = this.getnbrClasse.bind(this);
@@ -20,6 +21,7 @@ class ChoixAction  extends Component {
 
 
 componentDidMount(){
+localStorage.setItem("id_mat",this.state.id);
  localStorage.setItem('choix-cours',this.state.cours);
  this.setState({cours:localStorage.getItem('choix-cours')})
  if(localStorage.getItem('idProf')===null){
