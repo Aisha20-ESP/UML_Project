@@ -6,12 +6,12 @@ import ChoixCours from './components/ChoixCours'
 import Etudiant from './components/Etudiant'
 // import Professeur from './components/Professeur'
 import Connexion from './components/Connection'
-import {HashRouter,Switch, Route} from 'react-router-dom'
+import {Switch, Route, BrowserRouter} from 'react-router-dom'
 
 class App extends Component {
     render() {
         return ( 
-            <HashRouter>
+            <BrowserRouter>
                 <Switch>
                     <Route path="/choix-action" component={ChoixAction} />
                     <Route path="/choix-cours" component={ChoixCours} />
@@ -20,7 +20,7 @@ class App extends Component {
                     <Route path='/connexion' component={Connexion}/>
                     <Route path="/" component={Accueil} />
                 </Switch>
-            </HashRouter>
+            </BrowserRouter>
             
          )
     }
