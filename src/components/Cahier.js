@@ -62,7 +62,7 @@ class Cahier extends Component {
           console.log(result)
           if (result.data.reussi === "true"){
           alert('Données enregistrées!!')
-              this.props.history.push('/choix-action')
+          this.props.history.push('/')
           }
         }).catch(result=>console.log(result))
         
