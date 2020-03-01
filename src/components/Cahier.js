@@ -23,7 +23,7 @@ class Cahier extends Component {
           'Content-Type':'application/json;charset=UTF-8',
           "Access-Control-Allow-Origin":"*"
       }
-        axios.post("https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/recupEtudiant.php", headers)
+        axios.post("https://cors-anywhere.herokuapp.com/https://cahierdetextebd.000webhostapp.com/php/recupEtudiant.php", headers)
           .then(res => {
             // console.log(res.data);
             const id_etudiant = res.data.id.map(obj=>obj[0]);
