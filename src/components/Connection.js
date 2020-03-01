@@ -12,8 +12,7 @@ class Connection extends Component {
         this.state = { 
             login:'',
             password:'',
-            formCorrect:true,
-            redirect:false
+            formCorrect:true
          }
     }
 
@@ -21,25 +20,24 @@ class Connection extends Component {
         localStorage.clear()
     }
 
-     handleChange= e => {
+     handleChange= async e => {
          let {value,name}=e.target
         this.setState({[name]:value})
       }
-      handleResponse= resp =>{
-          console.log(resp)
-          
-        if (!resp.length){
+      handleResponse= resp=>{
+          resp=resp[0]
+        if (typeof(resp)==='string' || resp===false ||(resp)===undefined){
             this.setState({formCorrect:false})
         }  
         else{
-            if (resp[0]['id_prof']){
-                localStorage.setItem('idProf',resp[0]['id_prof'])
-                localStorage.setItem("nomProf",resp[0]['nom'])
-                this.props.history.push('/professeur')
+            if (resp['id_prof']){
+                localStorage.setItem('idProf',resp[1])
+                localStorage.setItem("nomProf",resp[0])
+                this.props.history.push('/')
             }
-            else if(resp[0]['id_etudiant']){
+            else if(resp['id_etudiant']){
                 localStorage.setItem('ide',resp[0]['id_etudiant'])
-                this.props.history.push('/etudiant')
+                this.props.history.push('/')
             } 
         } 
 
@@ -59,8 +57,7 @@ class Connection extends Component {
           axios.post(`https://cors-anywhere.herokuapp.com/https://cahierdetextebd.000webhostapp.com/php/verifconnex.php`,data,headers)
           .then(res=>{
               console.log(res)
-              res=res.data
-             this.handleResponse(res)
+             this.handleResponse(res.data)
             })
           .catch(res=>console.log(res))
           
@@ -71,6 +68,7 @@ class Connection extends Component {
       }
 
     render() { 
+       
         return ( 
             <div className="container-fluid">
                 <div  className='container-fluid' style={style.bgConnec}>
@@ -81,7 +79,7 @@ class Connection extends Component {
                 </div>
                 <div  className="row container-fluid d-flex flex-column align-content-center box2">
                     <div className="card col-md-4 col-10 col-xl-4 container cardConnec">
-                        <h5 style={style.connect} className="card-title text-uppercase text-center pt-3 mt-3 ">connexion</h5>
+                        <h5 style={style.connect} className="card-title text-uppercase text-center pt-3 mt-3 ">connection</h5>
                         <div className="m-2" style={style.hr}/>
                         
                         <div className="card-body ">
@@ -124,8 +122,8 @@ let style= {
     hr:{
         position:"relative",
         width:'20%',
-        margin:'2px',
-        alignSelf:'center',
+        left:'38%',
+        
         height:'2px',
         backgroundColor:'#00adff'
     },
