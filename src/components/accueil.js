@@ -47,7 +47,7 @@ componentDidMount(){
         'Content-Type':'application/json;charset=UTF-8',
         "Access-Control-Allow-Origin":"*"
     }
-    axios.post(`https://cors-anywhere.herokuapp.com/http://uml2020.atwebpages.com/getClasse.php`,fd,headers)
+    axios.post(`https://cors-anywhere.herokuapp.com/https://cahierdetextebd.000webhostapp.com/php/getClasse.php`,fd,headers)
         .then(result => {
             const tab=result.data.list.map(obj=>obj[0]);
             this.setState({classe:tab});
