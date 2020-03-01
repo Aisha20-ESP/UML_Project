@@ -23,7 +23,7 @@ class Cahier extends Component {
           'Content-Type':'application/json;charset=UTF-8',
           "Access-Control-Allow-Origin":"*"
       }
-        axios.post("https://cors-anywhere.herokuapp.com/https://cahierdetextebd.000webhostapp.com/php/recupEtudiant.php", headers)
+        axios.post("https://cahierdetextebd.000webhostapp.com/php/recupEtudiant.php", headers)
           .then(res => {
             // console.log(res.data);
             const id_etudiant = res.data.id.map(obj=>obj[0]);
@@ -61,8 +61,7 @@ class Cahier extends Component {
         .then(result => {
           console.log(result)
           if (result.data.reussi === "true"){
-          alert('Données enregistrées!!')
-          this.props.history.push('/')
+            alert('Données enregistrées!!')
           }
         }).catch(result=>console.log(result))
         

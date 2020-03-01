@@ -12,10 +12,13 @@ class ChoixCours  extends Component {
     constructor(props){
         super(props)
         this.state = { 
-            classe:this.props.location.choix,
+            classe:localStorage.getItem("choix-classe"),
             cours:[] ,  
             id_mat:''  
          }
+
+        this.listeCours = this.listeCours.bind(this);
+        this.handleButton = this.handleButton.bind(this);
     }
 
 
@@ -23,13 +26,10 @@ class ChoixCours  extends Component {
         var i=0;
         const classState=props.classe;
         const liste=classState.map((listcours)=>
-            <span className={(i++)+" choice rounded-circle "}>
-                <Link to={{
-                    pathname:"/choix-action",
-                    choix:listcours,
-                    id:i
-                 }} 
-                 className="link">{listcours}</Link>
+            <span className={(i++)+" choice rounded-circle"}>
+                <button type="button" onClick={this.handleButton} 
+                 className="link rounded-circle" value={listcours} id={i}>{listcours}
+                </button>
                 </span>
         )
 
@@ -37,10 +37,16 @@ class ChoixCours  extends Component {
             <div className="row" style={{display:'flex', justifyContent:'center'}}>{liste}</div>
         )
     }
+
+    handleButton(event){
+        localStorage.setItem("choix-cours",event.target.value);
+        localStorage.setItem("id_mat",event.target.id);
+        this.props.history.push("/choix-action");     
+    }
     
 componentDidMount(){
 
-    localStorage.setItem('choix-classe',this.state.classe);
+    // localStorage.setItem('choix-classe',this.state.classe);
     
 
 

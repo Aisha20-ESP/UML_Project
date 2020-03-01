@@ -3,14 +3,14 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import Header from './Header';
 import '../css/index.css'
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 
 
 
 class Accueil  extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = { 
             idProf:localStorage.getItem('idProf'),
             nom:localStorage.getItem('nomProf'),
@@ -18,23 +18,26 @@ class Accueil  extends Component {
             classe:[],        
          }
         this.listeClasse = this.listeClasse.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
     
 
     listeClasse(props) {
         const classState=props.classe;
         const liste=classState.map((listclass)=>
-            <span key={listclass} className=" choice rounded-circle ">
-                <Link  to={{
-                    pathname:"/choix-cours",
-                    choix:listclass
-                 }} 
-                 className="link">{listclass}</Link>
+            <span className=" choice rounded-circle ">
+                <button type="button" onClick={this.handleClick} 
+                 className="link rounded-circle" value={listclass}>{listclass}</button>
             </span>
         )
         return(
-            <div className="row" style={{display:'flex', justifyContent:'center',height:'100%'}}>{liste}</div>
+            <div className="row ml-2 mr-2" style={{display:'flex', justifyContent:'center',height:'100%'}}>{liste}</div>
         )
+    }
+
+    handleClick(event){
+        localStorage.setItem("choix-classe",event.target.value);
+        this.props.history.push("/choix-cours");     
     }
 
 componentDidMount(){
