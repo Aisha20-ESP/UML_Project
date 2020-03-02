@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import '../css/cahier.css';
 import Header from './Header';
+import PropTypes from 'prop-types';
 // import {Link} from 'react-router-dom'
 
 
@@ -14,6 +15,8 @@ class Cahier extends Component {
           nom:[],
           prenom: [],
           nbEtudiant: 0,
+          checks: [],
+          checkedItems: new Map(),
           date: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear()
         }
       }
@@ -48,9 +51,11 @@ class Cahier extends Component {
         const id=localStorage.getItem('id_mat');
         console.log(id);
         fd.append('texte',this.state.text);
-        fd.append('id_mat',id)
-        for(let i = 0; i < this.state.nbEtudiant[0]; i++){
-          fd.append("checklist["+i+"]", this.state.id_etudiant[i])
+        fd.append('id_mat',id);
+        fd.append('checked', this.state.checks);
+        fd.append('size', this.state.checkedItems.size);
+        for (var key of fd.entries()) {
+          console.log(key[0] + ', ' + key[1]);
         }
         var headers={
             'Content-Type':'application/json;charset=UTF-8',
@@ -75,7 +80,7 @@ class Cahier extends Component {
             <td>{this.state.nom[i]}</td>
             <td>{this.state.prenom[i]}</td>
             <td><label className="control control--checkbox">
-                  <input type="checkbox"  name={"checklist[" +i+ "]"} className="inputCahier" value={this.state.id_etudiant[i]}/>
+            <input type="checkbox" checked={PropTypes.Boolean} name={"checklist[" +i+ "]"} value={this.state.id_etudiant[i]} onChange = {this.handleChange}/>
                   <div className="control__indicator"></div>
                 </label>
             </td>
@@ -83,6 +88,17 @@ class Cahier extends Component {
         )
       }
       return table;
+    }
+
+    handleChange(e){
+      const item = e.target.name;
+      const isChecked = e.target.checked;
+      const value = e.target.value;
+      this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked, value) }));
+      this.setState({checks: this.state.checks.concat(value)})
+      console.log(this.state.checks)
+      // console.log(this.state.checkedItems)
+      // console.log(this.state.checkedItems.size)
     }
       
 
