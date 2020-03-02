@@ -19,6 +19,7 @@ class Cahier extends Component {
           checkedItems: new Map(),
           date: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear()
         }
+        this.handleChange = this.handleChange.bind(this);
       }
       
       componentDidMount(){   
