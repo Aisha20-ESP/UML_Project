@@ -52,7 +52,7 @@ class Cahier extends Component {
         console.log(id);
         fd.append('texte',this.state.text);
         fd.append('id_mat',id);
-        fd.append('checked', this.state.checks);
+        fd.append('checked', JSON.stringify(this.state.checks));
         fd.append('size', this.state.checkedItems.size);
         for (var key of fd.entries()) {
           console.log(key[0] + ', ' + key[1]);
